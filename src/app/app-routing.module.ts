@@ -2,15 +2,17 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import { LoginComponent } from './components/login/login.component';
-import { WareHouseManagerComponent } from './components/warehousemanager/ware-house-manager/ware-house-manager.component';
+import { WhmComponent } from './components/whm/whm/whm.component';
 import { ManufacturerComponent } from './components/manufacturer/manufacturer/manufacturer.component';
 
 const routes: Routes = [
   { path:'',redirectTo:'/home',pathMatch:'full'},
   { path:'home',component:LoginComponent},
-  { path:'warehousemanager',component:WareHouseManagerComponent},
-  { path:'manufacturer',component:ManufacturerComponent},
-  { path:"**",component:PageNotFoundComponent}
+  { path:'warehousemanager',redirectTo:'warehousemanager/home',pathMatch:'full'},
+  // { path:'warehousemanager',component:WhmComponent},
+  { path:'manufacturer',redirectTo:'manufacturer/home',pathMatch:'full'},
+  // { path:'manufacturer',component:ManufacturerComponent}
+  // { path:"**",component:PageNotFoundComponent}//need to be looked at the end of the project
 ];
 
 @NgModule({
@@ -20,5 +22,5 @@ const routes: Routes = [
 export class AppRoutingModule { }
 export const routingComponents=[LoginComponent,
                                 PageNotFoundComponent,
-                                WareHouseManagerComponent,
+                                WhmComponent,
                                 ManufacturerComponent]

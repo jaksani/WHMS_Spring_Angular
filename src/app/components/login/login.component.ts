@@ -18,15 +18,19 @@ export class LoginComponent implements OnInit {
     this.loginService.login(loginForm).subscribe(
       data =>
       {
-        if(data.user_type == "WareHouse_Manager")
+        if(data)
         {
-          this.router.navigate(['warehousemanager']);
+            sessionStorage.setItem("username",JSON.stringify(data.user_name));
+            if(data.user_type == "WareHouse_Manager")
+            {
+              this.router.navigate(['warehousemanager']);
+            }
+            else if(data.user_type == "Manufacturer")
+            {
+              this.router.navigate(['manufacturer']);
+            }
         }
-        else if(data.user_type == "Manufacturer")
-        {
-          this.router.navigate(['manufacturer']);
-        }
-      }
+    }
     );
     
     
