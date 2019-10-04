@@ -1,3 +1,22 @@
 <div class="main">
-    The My Orders Component
+        <div class="card m-3">
+                <div class="card-body">
+                    <table class="table table-bordered">
+                            <tr>
+                                <th>Order Id</th>
+                                <th>Item Code</th>
+                                <th>Item Quantity</th>
+                                <th>Status</th>
+                            </tr>
+                        <div *ngFor="let orders of orderList">
+                                <tr>
+                                    <td>{{orders.order_Id}}</td>
+                                    <td>{{orders.item_code}}</td>
+                                    <td>{{orders.item_quantity}}</td>
+                                    <td>{{orders.status}}</td>
+                                </tr>
+                        </div>
+                    </table>
+                </div>    
+            </div>
 </div>   

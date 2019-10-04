@@ -1,17 +1,35 @@
-<div style="text-align:center">
-<h1>Ware House Management System</h1>
-<form #loginForm="ngForm">
-    <div class="form-group">
-        <label>User Name:</label>
-        <input type="text" class="form-control" ngModel name="user_name">
+<div style="text-align:center" >
+    <div class="card m-3">
+        <h3 class="card-header">Ware House Management System</h3>
+        <div class="card-body text-left">
+             <h5 class="card-tittle">Login Form</h5><br>
+             <form [formGroup]="loginForm" (ngSubmit)="onSubmit(loginForm.value)">
+                <div class="form-row">
+                    <label class="col-sm-3">UserName:</label>
+                    <div class="col-sm-4">
+                        <input type="text" class="form-control" formControlName="user_name" [ngClass]="{'is-invalid':submitted && form.user_name.errors }">
+                        <div *ngIf="submitted && form.user_name.errors" class="invalid-feedback">
+                        <div *ngIf="form.user_name.errors.required">
+                            User Name is Required
+                        </div>
+                    </div>
+                    </div>
+                </div> 
+                &nbsp;
+                <div class="form-row">
+                    <label class="col-sm-3">Password:</label>
+                    <div class="col-sm-4">
+                    <input type="text" class="form-control" formControlName="password" [ngClass]="{'is-invalid':submitted && form.password.errors }">
+                    <div *ngIf="submitted && form.password.errors" class="invalid-feedback">
+                        <div *ngIf="form.password.errors.required">
+                            Password is Required
+                        </div>
+                    </div> 
+                    </div>
+                </div>
+                <br>
+                <button class="btn btn-primary" type="submit">Login</button>
+             </form>
+        </div>
     </div>
-    &nbsp;
-    <div class="form-group">
-        <label>Password :</label>
-        <input type="password" class="form-control" ngModel name="password">
-    </div>
-    <br>
-    <button class="btn btn-primary" (click)="onClick(loginForm.value)">Login</button>
-</form>
-{{user | json}}
 </div>

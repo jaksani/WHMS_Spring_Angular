@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { User } from 'src/app/beans/user';
 import { LoginService } from 'src/app/services/login.service';
 import { Router } from '@angular/router';
+import { FormBuilder,  Validators} from '@angular/forms';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -9,13 +10,27 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent implements OnInit {
 
-  constructor(private loginService:LoginService,private router : Router) { }
+  constructor(private loginService:LoginService,private router : Router,private formBuilder:FormBuilder) { }
+  submitted=false;
+
   ngOnInit() {
   }
+
+  loginForm = this.formBuilder.group({
+    user_name:['',Validators.required],
+    password:['',Validators.required]
+  });
+
+  get form()
+  {
+    return this.loginForm.controls
+  }
   
-  onClick(loginForm:User)
+  onSubmit(loginDetails:User)
   { 
-    this.loginService.login(loginForm).subscribe(
+    this.submitted=true;
+
+    this.loginService.login(loginDetails).subscribe(
       data =>
       {
         if(data)
@@ -32,7 +47,6 @@ export class LoginComponent implements OnInit {
         }
     }
     );
-    
     
   }
 }

@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule, routingComponents} from './app-routing.module';
 import { AppComponent } from './app.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule,ReactiveFormsModule } from '@angular/forms';
 import { WhmViewItemsComponent } from './components/whm/whm-view-items/whm-view-items.component';
 import { WhmMyOrdersComponent } from './components/whm/whm-my-orders/whm-my-orders.component';
 import { ManufacturerViewOrdersComponent } from './components/manufacturer/manufacturer-view-orders/manufacturer-view-orders.component';
@@ -25,7 +25,8 @@ import { ManufacturerModule } from './components/manufacturer/manufacturer.modul
     HttpClientModule,
     FormsModule,
     WhmModule,
-    ManufacturerModule
+    ManufacturerModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

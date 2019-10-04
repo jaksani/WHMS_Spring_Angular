@@ -9,9 +9,9 @@ const routes: Routes = [
   { path:'',redirectTo:'/home',pathMatch:'full'},
   { path:'home',component:LoginComponent},
   { path:'warehousemanager',redirectTo:'warehousemanager/home',pathMatch:'full'},
-  // { path:'warehousemanager',component:WhmComponent},
+  { path:'warehousemanager',component:WhmComponent},
   { path:'manufacturer',redirectTo:'manufacturer/home',pathMatch:'full'},
-  // { path:'manufacturer',component:ManufacturerComponent}
+  { path:'manufacturer',component:ManufacturerComponent}
   // { path:"**",component:PageNotFoundComponent}//need to be looked at the end of the project
 ];
 

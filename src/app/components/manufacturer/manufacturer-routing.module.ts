@@ -6,7 +6,7 @@ import { ManufacturerViewOrdersComponent } from './manufacturer-view-orders/manu
 
 
 const routes: Routes = [
-  {path:'maufacturer',component:ManufacturerComponent,
+  {path:'manufacturer',component:ManufacturerComponent,
     children:[
       { path:'home',component:ManufacturerHomeComponent},
       { path:'viewOrders',component:ManufacturerViewOrdersComponent}
