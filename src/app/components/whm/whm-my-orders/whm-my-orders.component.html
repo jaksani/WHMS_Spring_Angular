@@ -1,20 +1,20 @@
-<div class="main">
-        <div class="card m-3">
-                <div class="card-body">
-                    <table class="table table-bordered">
-                            <tr>
+<div class="card m-3 border-dark">
+        <h3 class="card-header border-dark">List of Orders</h3>
+        <div class="card-body">
+                <table class="table table-bordered">
+                        <tr>
                                 <th>Order Id</th>
                                 <th>Item Code</th>
                                 <th>Item Quantity</th>
                                 <th>Status</th>
-                            </tr>
-                            <tr *ngFor="let orders of orderList">
-                                    <td>{{orders.order_Id}}</td>
-                                    <td>{{orders.item_code}}</td>
-                                    <td>{{orders.item_quantity}}</td>
-                                    <td>{{orders.status}}</td>
-                            </tr>
-                    </table>
-                </div>    
-            </div>
-</div>   
+                        </tr>
+                        <tr *ngFor="let orders of orderList">
+                                <td>{{orders.order_Id}}</td>
+                                <td>{{orders.item_code}}</td>
+                                <td>{{orders.item_quantity}}</td>
+                                <td>{{orders.status}}</td>
+                        </tr>
+                </table>
+        </div>    
+</div>
+

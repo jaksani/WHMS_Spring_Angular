@@ -1,44 +1,47 @@
-<div class='main'>
-    <div class="card m-3" *ngIf="isForm">
-        <div class="card-body" style="width:100%" >
-        <h3 class="card-tittle">Get Purchases on a particular Date</h3>
-        <br>
-            <form [formGroup]="purchaseForm" (ngSubmit)="onSubmit(purchaseForm.value)">
-                <div class="form-row" >
-                    <label class="col-sm-3">Date Of Purchase:</label>
-                    <div class="col-sm-4">
-                        <input type="date" class="form-control" formControlName="date_of_purchase" [ngClass]="{'is-invalid':submitted && form.date_of_purchase.errors }">
-                        <div *ngIf="submitted && form.date_of_purchase.errors" class="invalid-feedback">                                
-                        <div *ngIf="form.date_of_purchase.errors.required">
-                            Date Of Purchase is Required
-                        </div>
-                        </div>
+<div class="card m-3 border-dark" >
+    <h3 class="card-header border-dark">Get Purchases on a particular Date</h3>
+    <div class="card-body " >
+    <br>
+        <form [formGroup]="purchaseForm" (ngSubmit)="onSubmit(purchaseForm.value)">
+            <div class="form-row" >
+                <label class="col-sm-3">Date Of Purchase:</label>
+                <div class="col-sm-4">
+                    <input type="date" class="form-control" formControlName="date_of_purchase" [ngClass]="{'is-invalid':submitted && form.date_of_purchase.errors }">
+                    <div *ngIf="submitted && form.date_of_purchase.errors" class="invalid-feedback">                                
+                    <div *ngIf="form.date_of_purchase.errors.required">
+                        Date Of Purchase is Required
                     </div>
-                </div>   
-                <br>
-                <button class="btn btn-primary" type="submit">Get Purchases</button>
-            </form>
-        </div>    
-    </div>
-    <div class="card m-3" *ngIf="isDisplay">
-        <div class="card-body" style="width:90%" >
-        <h3 class="card-tittle">List Of Purchase on Date {{date}}</h3>
-        <table>
-            <tr>
-                <th>Transaction Id</th>
-                <th>Customer Code</th>
-                <th>Item Code</th>
-                <th>Quantity</th>
-                <th>Amount</th>
-            </tr>
-            <tr *ngFor="let purchases of purchaseList">
-                        <td>{{purchases.transaction_id}}</td>
-                        <td>{{purchases.customer_code}}</td>
-                        <td>{{purchases.item_code}}</td>
-                        <td>{{purchases.quantity}}</td>
-                        <td>{{purchases.purchase_amount}}</td>
-            <tr>
-        </table>
-        </div>    
-    </div>
+                    </div>
+                </div>
+            </div>   
+            <br>
+            <button class="btn btn-primary" type="submit">Get Purchases</button>
+        </form>
+        <br>
+        <button class="btn btn-secondary" (click)="onReset()">Reset</button>
+    </div>    
+</div>
+<div class="card m-3 border-dark" *ngIf="isDisplay">
+    <h3 class="card-header border-dark">List Of Purchase on Date {{date}}</h3>
+    <div class="card-body" >
+    <table>
+        <tr>
+            <th>Transaction Id</th>
+            <th>Customer Code</th>
+            <th>Item Code</th>
+            <th>Quantity</th>
+            <th>Amount</th>
+        </tr>
+        <tr *ngFor="let purchases of purchaseList">
+            <td>{{purchases.transaction_id}}</td>
+            <td>{{purchases.customer_code}}</td>
+            <td>{{purchases.item_code}}</td>
+            <td>{{purchases.quantity}}</td>
+            <td>{{purchases.purchase_amount}}</td>
+        <tr>
+    </table>
+    </div>    
+</div>
+<div class="card m-3 border-dark" *ngIf="isMessage">
+    <label class="text-danger">There are no purchases on date {{date}}</label>
 </div>

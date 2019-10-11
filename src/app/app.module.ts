@@ -6,12 +6,14 @@ import { AppComponent } from './app.component';
 import { FormsModule,ReactiveFormsModule } from '@angular/forms';
 import { WhmModule } from './components/whm/whm.module';
 import { ManufacturerModule } from './components/manufacturer/manufacturer.module';
+import { LogoutComponent } from './components/logout/logout.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     routingComponents,
+    LogoutComponent,
 ],
   imports: [
     BrowserModule,

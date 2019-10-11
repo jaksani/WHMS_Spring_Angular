@@ -4,6 +4,7 @@ import { PageNotFoundComponent } from './components/page-not-found/page-not-foun
 import { LoginComponent } from './components/login/login.component';
 import { WhmComponent } from './components/whm/whm/whm.component';
 import { ManufacturerComponent } from './components/manufacturer/manufacturer/manufacturer.component';
+import { LogoutComponent } from './components/logout/logout.component';
 
 const routes: Routes = [
   { path:'',redirectTo:'/home',pathMatch:'full'},

@@ -3,7 +3,6 @@ import { Routes, RouterModule } from '@angular/router';
 import { WhmComponent } from './whm/whm.component';
 import { WhmViewItemsComponent } from './whm-view-items/whm-view-items.component';
 import { WhmMyOrdersComponent } from './whm-my-orders/whm-my-orders.component';
-import { WhmHomeComponent } from './whm-home/whm-home.component';
 import { WhmBillingComponent } from './whm-billing/whm-billing.component';
 import { WhmCustomerDetailsComponent } from './whm-customer-details/whm-customer-details.component';
 import { WhmCustomerRegistrationComponent } from './whm-customer-registration/whm-customer-registration.component';
@@ -11,12 +10,12 @@ import { WhmDeleteItemComponent } from './whm-delete-item/whm-delete-item.compon
 import { WhmPlaceOrderComponent } from './whm-place-order/whm-place-order.component';
 import { WhmPurchaseOnADateComponent } from './whm-purchase-on-a-date/whm-purchase-on-a-date.component';
 import { WhmUpdatePriceComponent } from './whm-update-price/whm-update-price.component';
+import { WhmGuard } from 'src/app/auth/whm.guard';
 
 
 const routes: Routes = [
-  { path:'warehousemanager',component:WhmComponent,
+  { path:'warehousemanager',component:WhmComponent,canActivate:[WhmGuard],
     children:[
-      { path:'home',component:WhmHomeComponent},
       { path:'viewItems',component:WhmViewItemsComponent},
       { path:'myOrders',component:WhmMyOrdersComponent},
       { path:'billing' ,component:WhmBillingComponent},

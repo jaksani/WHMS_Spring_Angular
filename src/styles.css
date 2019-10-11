@@ -7,7 +7,7 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
   z-index: 1;
   top: 0;
   left: 0;
-  background-color: #111;
+  background-color: rgb(58, 54, 54);
   overflow-x: hidden;
   padding-top: 60px;
 }
@@ -49,12 +49,17 @@ th, td {
   text-align: center;
 }
 tr:nth-child(even) {
-  background-color: #444;
+  background-color: rgb(228, 208, 208);
 }
 tr:nth-child(odd) {
- background-color: #ccc;
+ background-color: rgb(109, 100, 100);
 }
 th {
   background-color: #111;
   color: rgba(255, 255, 255, 0.945);
+}
+
+.header{
+    margin-left: 1200px;
+    margin-top: 60px;
 }

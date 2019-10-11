@@ -1,47 +1,46 @@
-<div class='main'>
-    <div class="card m-3" >
-        <div class="card-body" style="width:100%" >
-        <h3 class="card-tittle">Billing</h3>
-        <br>
-            <form [formGroup]="registrationForm" (ngSubmit)="onSubmit(registrationForm.value)">
-                <div class="form-row" >
-                    <label class="col-sm-3">Customer Name:</label>
-                    <div class="col-sm-4">
-                        <input type="text" class="form-control" formControlName="customer_name" [ngClass]="{'is-invalid':submitted && form.customer_name.errors }">
-                        <div *ngIf="submitted && form.customer_name.errors" class="invalid-feedback">                                
-                        <div *ngIf="form.customer_name.errors.required">
-                            Customer Name is Required
-                        </div>
-                        </div>
+<div class="card m-3 border-dark" >
+    <h3 class="card-header border-dark">New Registration</h3>
+    <div class="card-body" style="width:100%" >
+    <br>
+        <form [formGroup]="registrationForm" (ngSubmit)="onSubmit(registrationForm.value)">
+            <div class="form-row" >
+                <label class="col-sm-3">Customer Name:</label>
+                <div class="col-sm-4">
+                    <input type="text" class="form-control" formControlName="customer_name" [ngClass]="{'is-invalid':submitted && form.customer_name.errors }">
+                    <div *ngIf="submitted && form.customer_name.errors" class="invalid-feedback">                                
+                    <div *ngIf="form.customer_name.errors.required">
+                        Customer Name is Required
                     </div>
-                </div>   
-                &nbsp; 
-                <div class="form-row">
-                    <label class="col-sm-3">Address:</label>
-                    <div class="col-sm-4">
-                        <input type="text" class="form-control" formControlName="address" [ngClass]="{'is-invalid':submitted && form.address.errors }">
-                        <div *ngIf="submitted && form.address.errors" class="invalid-feedback">
-                        <div *ngIf="form.address.errors.required">
-                            Item Code is Required
-                        </div>
-                        </div>
-                    </div>
-                </div>      
-                &nbsp;      
-                <div class="form-row" >
-                    <label class="col-sm-3">Phone Number:</label>
-                    <div class="col-sm-4">
-                        <input type="text" class="form-control" formControlName="phone_number" [ngClass]="{'is-invalid':submitted && form.phone_number.errors }">
-                        <div *ngIf="submitted && form.phone_number.errors" class="invalid-feedback">
-                        <div *ngIf="form.phone_number.errors.required">
-                            Phone Number is Required
-                        </div>
-                        </div>
                     </div>
                 </div>
-                <br>
-                <button class="btn btn-primary" type="submit">Register</button>
-            </form>
-        </div>    
-    </div>
+            </div>   
+            &nbsp; 
+            <div class="form-row">
+                <label class="col-sm-3">Address:</label>
+                <div class="col-sm-4">
+                    <input type="text" class="form-control" formControlName="address" [ngClass]="{'is-invalid':submitted && form.address.errors }">
+                    <div *ngIf="submitted && form.address.errors" class="invalid-feedback">
+                    <div *ngIf="form.address.errors.required">
+                        Item Code is Required
+                    </div>
+                    </div>
+                </div>
+            </div>      
+            &nbsp;      
+            <div class="form-row" >
+                <label class="col-sm-3">Phone Number:</label>
+                <div class="col-sm-4">
+                    <input type="text" class="form-control" formControlName="phone_number" [ngClass]="{'is-invalid':submitted && form.phone_number.errors }">
+                    <div *ngIf="submitted && form.phone_number.errors" class="invalid-feedback">
+                    <div *ngIf="form.phone_number.errors.required">
+                        Phone Number is Required
+                    </div>
+                    </div>
+                </div>
+            </div>
+            <br>
+            <button class="btn btn-primary" type="submit">Register</button>
+        </form>
+    </div>    
 </div>
+

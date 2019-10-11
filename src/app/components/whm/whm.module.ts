@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule,ReactiveFormsModule } from '@angular/forms';
 import { WhmRoutingModule } from './whm-routing.module';
-import { WhmHomeComponent } from './whm-home/whm-home.component';
 import { WhmBillingComponent } from './whm-billing/whm-billing.component';
 import { WhmPlaceOrderComponent } from './whm-place-order/whm-place-order.component';
 import { WhmUpdatePriceComponent } from './whm-update-price/whm-update-price.component';
@@ -15,8 +14,7 @@ import { WhmMyOrdersComponent } from './whm-my-orders/whm-my-orders.component';
 
 
 @NgModule({
-  declarations: [WhmHomeComponent,
-                 WhmBillingComponent,
+  declarations: [WhmBillingComponent,
                  WhmPlaceOrderComponent, 
                  WhmUpdatePriceComponent, 
                  WhmPurchaseOnADateComponent, 

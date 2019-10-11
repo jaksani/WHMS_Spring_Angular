@@ -1,20 +1,20 @@
-<div class='main'>
-    <div class="card m-3">
-        <div class="card-body">
-            <table>
-                <tr>
-                    <th>Item Code</th>
-                    <th>Item Name</th>
-                    <th>Item Price</th>
-                    <th>Stock</th>
-                </tr>
-                <tr *ngFor="let items of itemList">
-                            <td>{{items.item_code}}</td>
-                            <td>{{items.item_name}}</td>
-                            <td>{{items.item_price}}</td>
-                            <td>{{items.stock}}</td>
-                <tr>
-              </table>
-        </div>    
-    </div>
+<div class="card m-3 border-dark">
+    <h3 class="card-header border-dark">List of Items</h3>
+    <div class="card-body">
+        <table>
+            <tr>
+                <th>Item Code</th>
+                <th>Item Name</th>
+                <th>Item Price</th>
+                <th>Stock</th>
+            </tr>
+            <tr *ngFor="let items of itemList">
+                        <td>{{items.item_code}}</td>
+                        <td>{{items.item_name}}</td>
+                        <td>{{items.item_price}}</td>
+                        <td>{{items.stock}}</td>
+            <tr>
+            </table>
+    </div>    
 </div>
+

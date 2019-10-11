@@ -1,47 +1,46 @@
-<div class='main'>
-    <div class="card m-3" >
-        <div class="card-body" style="width:100%" >
-        <h3 class="card-tittle">Order</h3>
-        <br>
-            <form [formGroup]="orderForm" (ngSubmit)="onSubmit(orderForm.value)">
-                <div class="form-row" >
-                    <label class="col-sm-3">Item Code:</label>
-                    <div class="col-sm-4">
-                        <input type="text" class="form-control" formControlName="item_code" [ngClass]="{'is-invalid':submitted && form.item_code.errors }">
-                        <div *ngIf="submitted && form.item_code.errors" class="invalid-feedback">                                
-                        <div *ngIf="form.item_code.errors.required">
-                            Item Code is Required
-                        </div>
-                        </div>
+<div class="card m-3 border-dark" >
+    <h3 class="card-header border-dark">Order</h3>
+    <div class="card-body" style="width:100%" >
+    <br>
+        <form [formGroup]="orderForm" (ngSubmit)="onSubmit(orderForm.value)">
+            <div class="form-row" >
+                <label class="col-sm-3">Item Code:</label>
+                <div class="col-sm-4">
+                    <input type="text" class="form-control" formControlName="item_code" [ngClass]="{'is-invalid':submitted && form.item_code.errors }">
+                    <div *ngIf="submitted && form.item_code.errors" class="invalid-feedback">                                
+                    <div *ngIf="form.item_code.errors.required">
+                        Item Code is Required
                     </div>
-                </div>   
-                &nbsp; 
-                <div class="form-row">
-                    <label class="col-sm-3">Manufacturer:</label>
-                    <div class="col-sm-4">
-                        <input type="text" class="form-control" formControlName="manufacturer_name" [ngClass]="{'is-invalid':submitted && form.manufacturer_name.errors }">
-                        <div *ngIf="submitted && form.manufacturer_name.errors" class="invalid-feedback">
-                        <div *ngIf="form.manufacturer_name.errors.required">
-                            Manufacturer name is Required
-                        </div>
-                        </div>
-                    </div>
-                </div>      
-                &nbsp;      
-                <div class="form-row" >
-                    <label class="col-sm-3">Item Quatity:</label>
-                    <div class="col-sm-4">
-                        <input type="text" class="form-control" formControlName="item_quantity" [ngClass]="{'is-invalid':submitted && form.item_quantity.errors }">
-                        <div *ngIf="submitted && form.item_quantity.errors" class="invalid-feedback">
-                        <div *ngIf="form.item_quantity.errors.required">
-                            Item Quatity is Required
-                        </div>
-                        </div>
                     </div>
                 </div>
-                <br>
-                <button class="btn btn-primary" type="submit">Place Order</button>
-            </form>
-        </div>    
-    </div>
+            </div>   
+            &nbsp; 
+            <div class="form-row">
+                <label class="col-sm-3">Manufacturer:</label>
+                <div class="col-sm-4">
+                    <input type="text" class="form-control" formControlName="manufacturer_name" [ngClass]="{'is-invalid':submitted && form.manufacturer_name.errors }">
+                    <div *ngIf="submitted && form.manufacturer_name.errors" class="invalid-feedback">
+                    <div *ngIf="form.manufacturer_name.errors.required">
+                        Manufacturer name is Required
+                    </div>
+                    </div>
+                </div>
+            </div>      
+            &nbsp;      
+            <div class="form-row" >
+                <label class="col-sm-3">Item Quatity:</label>
+                <div class="col-sm-4">
+                    <input type="text" class="form-control" formControlName="item_quantity" [ngClass]="{'is-invalid':submitted && form.item_quantity.errors }">
+                    <div *ngIf="submitted && form.item_quantity.errors" class="invalid-feedback">
+                    <div *ngIf="form.item_quantity.errors.required">
+                        Item Quatity is Required
+                    </div>
+                    </div>
+                </div>
+            </div>
+            <br>
+            <button class="btn btn-primary" type="submit">Place Order</button>
+        </form>
+    </div>    
 </div>
+
