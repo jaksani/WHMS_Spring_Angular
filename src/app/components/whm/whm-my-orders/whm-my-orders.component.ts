@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { WhmOrdersService } from 'src/app/services/whm-orders.service';
+import { WhmService } from 'src/app/services/whm.service';
 import { Router } from '@angular/router';
-import { OrderDetails } from 'src/app/beans/order-details';
+import { OrderDetails } from 'src/app/models/order-details';
 
 @Component({
   selector: 'app-whm-my-orders',
@@ -11,10 +11,10 @@ import { OrderDetails } from 'src/app/beans/order-details';
 export class WhmMyOrdersComponent implements OnInit {
 
   private orderList:OrderDetails[];
-  constructor(private viewItemsService: WhmOrdersService, private router : Router) { }
+  constructor(private whmService: WhmService, private router : Router) { }
   username:String=JSON.parse(sessionStorage.getItem('username'));
   ngOnInit() {
-    this.viewItemsService.getMyOrders(this.username).subscribe(
+    this.whmService.getMyOrders(this.username).subscribe(
       data =>{
         if(data)
         {

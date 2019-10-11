@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { ViewOrdersService } from 'src/app/services/view-orders.service';
+import { ManufacturerService } from 'src/app/services/manufacturer.service';
 import { Router } from '@angular/router';
-import { OrderDetails } from 'src/app/beans/order-details';
+import { OrderDetails } from 'src/app/models/order-details';
 
 @Component({
   selector: 'app-manufacturer-view-orders',
@@ -11,10 +11,10 @@ import { OrderDetails } from 'src/app/beans/order-details';
 export class ManufacturerViewOrdersComponent implements OnInit {
 
   private orderList:OrderDetails[];
-  constructor(private viewItemsService: ViewOrdersService, private router : Router) { }
+  constructor(private manufacturerService: ManufacturerService, private router : Router) { }
   username:String=JSON.parse(sessionStorage.getItem('username'));
   ngOnInit() {
-    this.viewItemsService.getOrders(this.username).subscribe(
+    this.manufacturerService.getOrders(this.username).subscribe(
       data =>{
         if(data)
         {

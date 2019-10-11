@@ -8,14 +8,12 @@
                                 <th>Item Quantity</th>
                                 <th>Status</th>
                             </tr>
-                        <div *ngFor="let orders of orderList">
-                                <tr>
+                            <tr *ngFor="let orders of orderList">
                                     <td>{{orders.order_Id}}</td>
                                     <td>{{orders.item_code}}</td>
                                     <td>{{orders.item_quantity}}</td>
                                     <td>{{orders.status}}</td>
-                                </tr>
-                        </div>
+                            </tr>
                     </table>
                 </div>    
             </div>

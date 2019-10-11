@@ -2,14 +2,14 @@ html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 .sidenav {
   height: 100%;
-  width: 180px;
+  width: 240px;
   position: fixed;
   z-index: 1;
   top: 0;
   left: 0;
   background-color: #111;
   overflow-x: hidden;
-  padding-top: 20px;
+  padding-top: 60px;
 }
 
 .sidenav a {
@@ -25,7 +25,7 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 }
 
 .main {
-  margin-left: 180px; /* Same as the width of the sidenav */
+  margin-left: 240px; /* Same as the width of the sidenav */
   font-size: 20px; /* Increased text to enable scrolling*/ 
   padding: 0px 10px;
   margin-top: 20px;
@@ -35,8 +35,8 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
   .sidenav {padding-top: 15px;}
   .sidenav a {font-size: 18px;}
 }
-/* table {
-  width:100%;
+table {
+  width:75%;
   margin-top: 15px;
 }
 table, th, td {
@@ -49,12 +49,12 @@ th, td {
   text-align: center;
 }
 tr:nth-child(even) {
-  background-color: #eee;
+  background-color: #444;
 }
 tr:nth-child(odd) {
- background-color: #fff;
+ background-color: #ccc;
 }
 th {
   background-color: #111;
   color: rgba(255, 255, 255, 0.945);
-} */
+}

@@ -1,0 +1,23 @@
+<div class='main'>
+    <div class="card m-3" >
+        <div class="card-body" style="width:100%" >
+        <h3 class="card-tittle">Billing</h3>
+        <br>
+            <form [formGroup]="detailsForm" (ngSubmit)="onSubmit(detailsForm.value)">
+                <div class="form-row" >
+                    <label class="col-sm-3">Customer Code:</label>
+                    <div class="col-sm-4">
+                        <input type="text" class="form-control" formControlName="customer_code" [ngClass]="{'is-invalid':submitted && form.customer_code.errors }">
+                        <div *ngIf="submitted && form.customer_code.errors" class="invalid-feedback">                                
+                        <div *ngIf="form.customer_code.errors.required">
+                            Customer Code is Required
+                        </div>
+                        </div>
+                    </div>
+                </div>   
+                <br>
+                <button class="btn btn-primary" type="submit">Get Details</button>
+            </form>
+        </div>    
+    </div>
+</div>

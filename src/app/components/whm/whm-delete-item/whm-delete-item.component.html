@@ -1,0 +1,23 @@
+<div class='main'>
+    <div class="card m-3" >
+        <div class="card-body" style="width:100%" >
+        <h3 class="card-tittle">Billing</h3>
+        <br>
+            <form [formGroup]="deleteForm" (ngSubmit)="onSubmit(deleteForm.value)">
+                <div class="form-row" >
+                    <label class="col-sm-3">Item Code:</label>
+                    <div class="col-sm-4">
+                        <input type="text" class="form-control" formControlName="item_code" [ngClass]="{'is-invalid':submitted && form.item_code.errors }">
+                        <div *ngIf="submitted && form.item_code.errors" class="invalid-feedback">                                
+                        <div *ngIf="form.item_code.errors.required">
+                            Item Code is Required
+                        </div>
+                        </div>
+                    </div>
+                </div>   
+                <br>
+                <button class="btn btn-primary" type="submit">Delete</button>
+            </form>
+        </div>    
+    </div>
+</div>

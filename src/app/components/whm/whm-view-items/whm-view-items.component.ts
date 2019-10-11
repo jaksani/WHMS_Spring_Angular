@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { ViewItemsService } from 'src/app/services/view-items.service';
+import { WhmService } from 'src/app/services/whm.service';
 import { Router } from '@angular/router';
-import { ItemDetails } from 'src/app/beans/item-details';
+import { ItemDetails } from 'src/app/models/item-details';
 
 @Component({
   selector: 'app-whm-view-items',
@@ -10,10 +10,10 @@ import { ItemDetails } from 'src/app/beans/item-details';
 })
 export class WhmViewItemsComponent implements OnInit {
    private itemList:ItemDetails[];
-  constructor(private viewItemsService: ViewItemsService, private router : Router) { }
+  constructor(private whmService: WhmService, private router : Router) { }
   
   ngOnInit() {
-    this.viewItemsService.viewItems().subscribe(
+    this.whmService.viewItems().subscribe(
       data =>{
         if(data)
         {

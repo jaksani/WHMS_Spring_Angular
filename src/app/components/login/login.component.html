@@ -1,12 +1,12 @@
 <div style="text-align:center" >
-    <div class="card m-3">
-        <h3 class="card-header">Ware House Management System</h3>
-        <div class="card-body text-left">
-             <h5 class="card-tittle">Login Form</h5><br>
+    <div class="card border-dark" style="width: 50% ;margin-top:20px;margin-left: 350px;">
+        <h3 class="card-header border-dark">Ware House Management System</h3>
+        <div class="card-body text-center" >
+             <h5 class="card-tittle text-center">Login</h5><br>
              <form [formGroup]="loginForm" (ngSubmit)="onSubmit(loginForm.value)">
-                <div class="form-row">
-                    <label class="col-sm-3">UserName:</label>
-                    <div class="col-sm-4">
+                <div class="form-row" style="padding-left: 140px;">
+                    <label class="col-sm-4">User Name:</label>
+                    <div class="col-sm-5">
                         <input type="text" class="form-control" formControlName="user_name" [ngClass]="{'is-invalid':submitted && form.user_name.errors }">
                         <div *ngIf="submitted && form.user_name.errors" class="invalid-feedback">
                         <div *ngIf="form.user_name.errors.required">
@@ -16,10 +16,10 @@
                     </div>
                 </div> 
                 &nbsp;
-                <div class="form-row">
-                    <label class="col-sm-3">Password:</label>
-                    <div class="col-sm-4">
-                    <input type="text" class="form-control" formControlName="password" [ngClass]="{'is-invalid':submitted && form.password.errors }">
+                <div class="form-row" style="padding-left:140px">
+                    <label class="col-sm-4">Password:</label>
+                    <div class="col-sm-5">
+                    <input type="password" class="form-control" formControlName="password" [ngClass]="{'is-invalid':submitted && form.password.errors }">
                     <div *ngIf="submitted && form.password.errors" class="invalid-feedback">
                         <div *ngIf="form.password.errors.required">
                             Password is Required

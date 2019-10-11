@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { User } from 'src/app/beans/user';
+import { User } from 'src/app/models/user';
 import { LoginService } from 'src/app/services/login.service';
 import { Router } from '@angular/router';
 import { FormBuilder,  Validators} from '@angular/forms';

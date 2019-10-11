@@ -2,17 +2,17 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs'
 import { serverPath } from '../constant/server-constant';
-import { ItemDetails } from '../beans/item-details';
+import { OrderDetails } from '../models/order-details';
 
 @Injectable({
   providedIn: 'root'
 })
-export class ViewItemsService {
+export class ManufacturerService {
 
   constructor(private httpClient : HttpClient) { }
 
-  viewItems():Observable<ItemDetails[]>
+  getOrders(username:String):Observable<OrderDetails[]>
   {
-    return this.httpClient.get<ItemDetails[]>(serverPath+"rest_viewItems");
+    return this.httpClient.get<OrderDetails[]>(serverPath+"rest_viewOrders/"+username);
   }
 }
