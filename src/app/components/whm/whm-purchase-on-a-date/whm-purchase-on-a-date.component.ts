@@ -13,13 +13,13 @@ export class WhmPurchaseOnADateComponent implements OnInit {
 
   constructor(private whmService:WhmService,private router : Router,private formBuilder:FormBuilder) { }
   submitted=false;
-  isDisplay:boolean;
+  isDisplay=false;
   isMessage=false;
   purchaseList:PurchaseDetails[];
   date:any;
 
   ngOnInit() {
-    this.isDisplay=false;
+
   }
 
   purchaseForm = this.formBuilder.group({
@@ -37,16 +37,18 @@ export class WhmPurchaseOnADateComponent implements OnInit {
 
     this.whmService.getPurchases(purchaseDetails).subscribe(
       data =>
-      {
-        if(data)
+      { 
+        this.purchaseList=data;
+        this.date=purchaseDetails.date_of_purchase;
+        console.log(this.purchaseList);
+        if(this.purchaseList.length!=0)
         {
           this.isDisplay=true;
-          this.date=purchaseDetails.date_of_purchase;
-          this.purchaseList=data;
         }
         else
         {
           this.isMessage=true;
+          this.isDisplay=false
         }
       }
     );

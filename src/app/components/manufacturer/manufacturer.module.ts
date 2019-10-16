@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { ManufacturerRoutingModule } from './manufacturer-routing.module';
 import { ManufacturerHomeComponent } from './manufacturer-home/manufacturer-home.component';
 import { ManufacturerViewOrdersComponent } from './manufacturer-view-orders/manufacturer-view-orders.component';
+import { ManufacturerGuard } from 'src/app/auth/manufacturer.guard';
 
 
 
@@ -13,6 +14,7 @@ import { ManufacturerViewOrdersComponent } from './manufacturer-view-orders/manu
   imports: [
     CommonModule,
     ManufacturerRoutingModule
-  ]
+  ],
+  providers: [ManufacturerGuard]
 })
 export class ManufacturerModule { }

@@ -3,6 +3,7 @@ import { WhmService } from 'src/app/services/whm.service';
 import { Router } from '@angular/router';
 import { FormBuilder, Validators } from '@angular/forms';
 import { CustomerDetails } from 'src/app/models/customer-details';
+import { error } from 'protractor';
 
 @Component({
   selector: 'app-whm-customer-details',
@@ -12,9 +13,13 @@ import { CustomerDetails } from 'src/app/models/customer-details';
 export class WhmCustomerDetailsComponent implements OnInit {
 
   constructor(private whmService:WhmService,private router : Router,private formBuilder:FormBuilder) { }
-  submitted=false;
+  private submitted=false;
+  private isMessage=false;
+  private isDisplay=false;
+  private customerDetails:CustomerDetails;
   
   ngOnInit() {
+    this.detailsForm.reset();
   }
 
   detailsForm = this.formBuilder.group({
@@ -29,18 +34,25 @@ export class WhmCustomerDetailsComponent implements OnInit {
   onSubmit(customerDetails:CustomerDetails)
   { 
     this.submitted=true;
-
-    this.whmService.getDetails(customerDetails.customer_code).subscribe(
+    let code:number=customerDetails.customer_code;
+    this.whmService.getDetails(code).subscribe(
       data =>
       {
-        if(data)
+        this.customerDetails=data;
+        if(this.customerDetails!=null)
         {
-          console.log(data);
-          
+          this.isDisplay=true;
+          this.ngOnInit();
         }
+      },
+      error =>
+      {
+        this.isMessage=true;
+        this.ngOnInit();
       }
     );
     
   }
+
 
 }

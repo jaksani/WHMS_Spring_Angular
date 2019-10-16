@@ -13,6 +13,16 @@ export class ManufacturerService {
 
   getOrders(username:String):Observable<OrderDetails[]>
   {
-    return this.httpClient.get<OrderDetails[]>(serverPath+"rest_viewOrders/"+username);
+    return this.httpClient.get<OrderDetails[]>(serverPath+"rest/viewOrders/"+username);
+  }
+
+  acceptOrder(orderDetails:OrderDetails):Observable<OrderDetails>
+  {
+    return this.httpClient.put<OrderDetails>(serverPath+"rest/acceptOrder",orderDetails);
+  }
+
+  rejectOrder(orderDetails:OrderDetails):Observable<OrderDetails>
+  {
+    return this.httpClient.put<OrderDetails>(serverPath+"rest/rejectOrder",orderDetails);
   }
 }

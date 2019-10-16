@@ -14,7 +14,7 @@ import { WhmGuard } from 'src/app/auth/whm.guard';
 
 
 const routes: Routes = [
-  { path:'warehousemanager',component:WhmComponent,canActivate:[WhmGuard],
+  { path:'warehousemanager',component:WhmComponent,
     children:[
       { path:'viewItems',component:WhmViewItemsComponent},
       { path:'myOrders',component:WhmMyOrdersComponent},

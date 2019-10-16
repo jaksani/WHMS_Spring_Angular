@@ -16,46 +16,51 @@ export class WhmService {
 
   viewItems():Observable<ItemDetails[]>
   {
-    return this.httpClient.get<ItemDetails[]>(serverPath+"rest_viewItems");
+    return this.httpClient.get<ItemDetails[]>(serverPath+"rest/viewItems");
   }
 
   getMyOrders(username:String):Observable<OrderDetails[]>
   {
-    return this.httpClient.get<OrderDetails[]>(serverPath+"rest_myOrders/"+username);
+    return this.httpClient.get<OrderDetails[]>(serverPath+"rest/myOrders/"+username);
   }
 
   generateBill(billingDetails:PurchaseDetails):Observable<PurchaseDetails>
   {
-    return this.httpClient.post<PurchaseDetails>(serverPath+"rest_Billing",billingDetails);
+    return this.httpClient.post<PurchaseDetails>(serverPath+"rest/Billing",billingDetails);
   }
 
   getDetails(customer_code:number):Observable<CustomerDetails>
   {
-    return this.httpClient.get<CustomerDetails>(serverPath+"rest_getCustomerDetails/"+customer_code);
+    return this.httpClient.get<CustomerDetails>(serverPath+"rest/getCustomerDetails/"+customer_code);
   }
 
   registerCustomer(registrationDetails:CustomerDetails):Observable<CustomerDetails>
   {
-    return this.httpClient.post<CustomerDetails>(serverPath+"rest_customerRegister",registrationDetails);
+    return this.httpClient.post<CustomerDetails>(serverPath+"rest/customerRegister",registrationDetails);
   }
 
   deleteItem(itemDetails:ItemDetails):Observable<String>
   {
-    return this.httpClient.delete<String>(serverPath+"rest_DeleteItem/"+itemDetails.item_code);
+    return this.httpClient.delete<String>(serverPath+"rest/DeleteItem/"+itemDetails.item_code);
   }
 
   updatePrice(itemDetails:ItemDetails):Observable<ItemDetails>
   {
-    return this.httpClient.put<ItemDetails>(serverPath+"rest_UpdatePrice",itemDetails);
+    return this.httpClient.put<ItemDetails>(serverPath+"rest/UpdatePrice",itemDetails);
   }
 
   getPurchases(purchaseDetails:PurchaseDetails):Observable<PurchaseDetails[]>
   {
-    return this.httpClient.get<PurchaseDetails[]>(serverPath+"rest_ListPurchase/"+purchaseDetails.date_of_purchase);
+    return this.httpClient.get<PurchaseDetails[]>(serverPath+"rest/ListPurchase/"+purchaseDetails.date_of_purchase);
   }
 
   placeOrder(orderDetails:OrderDetails):Observable<OrderDetails>
   {
-    return this.httpClient.post<OrderDetails>(serverPath+"rest_PlaceOrder",orderDetails);
+    return this.httpClient.post<OrderDetails>(serverPath+"rest/PlaceOrder",orderDetails);
+  }
+
+  cancelOrder(orderDetails:OrderDetails):Observable<OrderDetails>
+  {
+    return this.httpClient.put<OrderDetails>(serverPath+"rest/cancelOrder",orderDetails);
   }
 }

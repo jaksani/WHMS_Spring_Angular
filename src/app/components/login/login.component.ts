@@ -35,13 +35,15 @@ export class LoginComponent implements OnInit {
       {
         if(data)
         {
-            sessionStorage.setItem("username",JSON.stringify(data.user_name));
+            
             if(data.user_type == "WareHouse_Manager")
             {
+              sessionStorage.setItem("whmDetails",JSON.stringify(data));  
               this.router.navigate(['warehousemanager']);
             }
             else if(data.user_type == "Manufacturer")
             {
+              sessionStorage.setItem("manufacturerDetails",JSON.stringify(data));
               this.router.navigate(['manufacturer']);
             }
         }

@@ -8,13 +8,18 @@
                                 <th>Item Quantity</th>
                                 <th>Status</th>
                         </tr>
-                        <tr *ngFor="let orders of orderList">
-                                <td>{{orders.order_Id}}</td>
-                                <td>{{orders.item_code}}</td>
-                                <td>{{orders.item_quantity}}</td>
-                                <td>{{orders.status}}</td>
+                        <tr *ngFor="let order of orderList">
+                                <td>{{order.order_Id}}</td>
+                                <td>{{order.item_code}}</td>
+                                <td>{{order.item_quantity}}</td>
+                                <td>{{order.status}}</td>
+                                <td *ngIf="order.status=='pending'" >
+                                        <button class="btn btn-primary" (click)="cancelOrder(order)">Cancel</button>
+                                </td>
                         </tr>
                 </table>
         </div>    
 </div>
-
+<div class="card m-3 border-dark" *ngIf="isMessage">
+        <label class="text-danger" *ngIf="orderDetails.status=='Canceled'">You have canceled the order with order id {{orderDetails.order_Id}}</label>
+</div>

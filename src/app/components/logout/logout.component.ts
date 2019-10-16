@@ -11,11 +11,13 @@ export class LogoutComponent implements OnInit {
   constructor(private router:Router) { }
 
   ngOnInit() {
+    console.log('storage length is ' + sessionStorage.length);
     
   }
 
   onClick()
   {
+    sessionStorage.removeItem('whmDetails');
     sessionStorage.clear();
     this.router.navigate(['home']);
   }

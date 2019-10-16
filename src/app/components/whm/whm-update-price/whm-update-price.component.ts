@@ -3,6 +3,7 @@ import { WhmService } from 'src/app/services/whm.service';
 import { Router } from '@angular/router';
 import { FormBuilder, Validators } from '@angular/forms';
 import { ItemDetails } from 'src/app/models/item-details';
+import { error } from 'protractor';
 
 @Component({
   selector: 'app-whm-update-price',
@@ -13,9 +14,13 @@ export class WhmUpdatePriceComponent implements OnInit {
 
   
   constructor(private whmService:WhmService,private router : Router,private formBuilder:FormBuilder) { }
-  submitted=false;
+  private submitted=false;
+  private isMessage=false;
+  private isDisplay=false;
+  private itemDetails:ItemDetails;
   
   ngOnInit() {
+    this.updateForm.reset();
   }
 
   updateForm = this.formBuilder.group({
@@ -31,18 +36,30 @@ export class WhmUpdatePriceComponent implements OnInit {
   onSubmit(itemDetails:ItemDetails)
   { 
     this.submitted=true;
-
+    let code:number=itemDetails.item_code;
     this.whmService.updatePrice(itemDetails).subscribe(
       data =>
       {
-        if(data)
+        this.itemDetails=data;
+        if(itemDetails!=null)
         {
-          console.log(data);
-          
+          this.isDisplay=true;
+          this.ngOnInit();
         }
+      },
+      error =>
+      {
+        this.isMessage=true;
+        this.ngOnInit();
       }
     );
     
+  }
+
+  onReset()
+  {
+    this.submitted=false;
+    this.updateForm.reset();
   }
 
 }

@@ -1,3 +1,27 @@
-<div class="main">
-    {{orderList | json}}
+<div class="card m-3 border-dark" *ngIf="isDisplay">
+    <h3 class="card-header border-dark">List of Orders</h3>
+    <div class="card-body">
+            <table class="table table-bordered">
+                    <tr>
+                            <th>Order Id</th>
+                            <th>Item Code</th>
+                            <th>Item Quantity</th>
+                            <th>Status</th>
+                    </tr>
+                    <tr *ngFor="let order of orderList">
+                            <td>{{order.order_Id}}</td>
+                            <td>{{order.item_code}}</td>
+                            <td>{{order.item_quantity}}</td>
+                            <td>{{order.status}}</td>
+                            <td *ngIf="order.status=='pending'" >
+                                <button class="btn btn-primary" (click)="acceptOrder(order)">Accept</button>&nbsp;
+                                <button class="btn btn-primary" (click)="rejectOrder(order)">Reject</button>
+                            </td>
+                    </tr>
+            </table>
+    </div>    
+</div>
+<div class="card m-3 border-dark" *ngIf="isMessage">
+        <label class="text-danger" *ngIf="orderDetails.status=='Accepted'">You have accepted the order with order id {{orderDetails.order_Id}}</label>
+        <label class="text-danger" *ngIf="orderDetails.status=='Rejected'">You have rejected the order with order id {{orderDetails.order_Id}}</label>
 </div>

@@ -3,6 +3,7 @@ import { WhmService } from 'src/app/services/whm.service';
 import { Router } from '@angular/router';
 import { FormBuilder, Validators } from '@angular/forms';
 import { OrderDetails } from 'src/app/models/order-details';
+import { User } from 'src/app/models/user';
 
 @Component({
   selector: 'app-whm-place-order',
@@ -32,7 +33,9 @@ export class WhmPlaceOrderComponent implements OnInit {
   onSubmit(orderDetails:OrderDetails)
   { 
     this.submitted=true;
-    orderDetails.manager_name=JSON.parse(sessionStorage.getItem('username'));
+    let whmDetails:User=JSON.parse(sessionStorage.getItem('whmDetails'));
+    orderDetails.manager_name=whmDetails.user_name;
+    
     this.whmService.placeOrder(orderDetails).subscribe(
       data =>
       {

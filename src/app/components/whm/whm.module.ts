@@ -11,6 +11,7 @@ import { WhmCustomerDetailsComponent } from './whm-customer-details/whm-customer
 import { WhmDeleteItemComponent } from './whm-delete-item/whm-delete-item.component';
 import { WhmViewItemsComponent } from './whm-view-items/whm-view-items.component';
 import { WhmMyOrdersComponent } from './whm-my-orders/whm-my-orders.component';
+import { WhmGuard } from 'src/app/auth/whm.guard';
 
 
 @NgModule({
@@ -28,6 +29,7 @@ import { WhmMyOrdersComponent } from './whm-my-orders/whm-my-orders.component';
     WhmRoutingModule,
     FormsModule,
     ReactiveFormsModule
-  ]
+  ],
+  providers:[]
 })
 export class WhmModule { }

@@ -1,20 +1,20 @@
 import { Injectable } from '@angular/core';
-import { User } from '../models/user';
 import { Router } from '@angular/router';
+import { User } from '../models/user';
 
 @Injectable({
   providedIn: 'root'
 })
-export class WhmAuthService {
+export class ManufacturerAuthService {
 
   constructor(private router:Router) { }
   
   hasAccess():boolean
   {
-    let whmDetails:User=JSON.parse(sessionStorage.getItem('whmDetails'));
-    console.log(whmDetails + 'in auth service');
+    let manufacturerDetails:User=JSON.parse(sessionStorage.getItem('manufacturerDetails'));
+    console.log(manufacturerDetails + 'in auth service');
     
-    if(whmDetails != null && whmDetails.user_type == "WareHouse_Manager")
+    if(manufacturerDetails != null && manufacturerDetails.user_type == "Manufacturer")
     {
       return true;
     }

@@ -29,6 +29,12 @@
             <br>
             <button class="btn btn-primary" type="submit">Update</button>
         </form>
+        
     </div>    
 </div>
-
+<div class="card m-3 border-dark" *ngIf="isDisplay">
+    <label class="text-danger">The price of item with item code {{itemDetails.item_code}} updated to {{itemDetails.item_price}} rupees</label>
+</div>
+<div class="card m-3 border-dark" *ngIf="isMessage">
+        <label class="text-danger">There is no item with given item code {{code}}</label>
+</div>

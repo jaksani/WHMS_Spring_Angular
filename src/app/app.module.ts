@@ -7,6 +7,7 @@ import { FormsModule,ReactiveFormsModule } from '@angular/forms';
 import { WhmModule } from './components/whm/whm.module';
 import { ManufacturerModule } from './components/manufacturer/manufacturer.module';
 import { LogoutComponent } from './components/logout/logout.component';
+import { WhmGuard } from './auth/whm.guard';
 
 
 @NgModule({
@@ -24,7 +25,7 @@ import { LogoutComponent } from './components/logout/logout.component';
     ManufacturerModule,
     ReactiveFormsModule
   ],
-  providers: [],
+  providers: [WhmGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
