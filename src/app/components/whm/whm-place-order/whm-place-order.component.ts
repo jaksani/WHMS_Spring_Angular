@@ -14,8 +14,10 @@ export class WhmPlaceOrderComponent implements OnInit {
 
   
   constructor(private whmService:WhmService,private router : Router,private formBuilder:FormBuilder) { }
-  submitted=false;
-  
+  private submitted=false;
+  private isOrdered=false;
+  private isError=false;
+  private orderDetails:OrderDetails;
   ngOnInit() {
   }
 
@@ -35,14 +37,21 @@ export class WhmPlaceOrderComponent implements OnInit {
     this.submitted=true;
     let whmDetails:User=JSON.parse(sessionStorage.getItem('whmDetails'));
     orderDetails.manager_name=whmDetails.user_name;
-    
     this.whmService.placeOrder(orderDetails).subscribe(
       data =>
       {
         if(data)
         {
-          console.log(data);
-          
+          this.orderDetails=data;
+          this.isOrdered=true;     
+          this.ngOnInit();     
+          this.isError=false;
+        }
+        else
+        {
+          this.isError=true;
+          this.ngOnInit();
+          this.isOrdered=false;
         }
       }
     );

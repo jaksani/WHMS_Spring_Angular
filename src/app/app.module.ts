@@ -25,7 +25,7 @@ import { WhmGuard } from './auth/whm.guard';
     ManufacturerModule,
     ReactiveFormsModule
   ],
-  providers: [WhmGuard],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

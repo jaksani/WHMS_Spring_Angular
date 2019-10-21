@@ -17,6 +17,14 @@
             <br>
             <button class="btn btn-primary" type="submit">Delete</button>
         </form>
+        &nbsp;
+        <div *ngIf="isDeleted">
+            <label>Item Deleted</label>
+        </div>
+        &nbsp;
+        <div *ngIf="isNull">
+            <label>Item doesn't exists </label>
+        </div>
     </div>    
 </div>
 

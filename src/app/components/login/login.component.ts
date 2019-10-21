@@ -11,9 +11,13 @@ import { FormBuilder,  Validators} from '@angular/forms';
 export class LoginComponent implements OnInit {
 
   constructor(private loginService:LoginService,private router : Router,private formBuilder:FormBuilder) { }
-  submitted=false;
+  private submitted=false;
+  private isInvalid=false;
+
 
   ngOnInit() {
+    this.submitted=false;
+    this.loginForm.reset();
   }
 
   loginForm = this.formBuilder.group({
@@ -35,7 +39,6 @@ export class LoginComponent implements OnInit {
       {
         if(data)
         {
-            
             if(data.user_type == "WareHouse_Manager")
             {
               sessionStorage.setItem("whmDetails",JSON.stringify(data));  
@@ -47,8 +50,12 @@ export class LoginComponent implements OnInit {
               this.router.navigate(['manufacturer']);
             }
         }
-    }
-    );
-    
+        else
+        {
+          this.isInvalid=true;
+          this.ngOnInit();
+        }
+      }
+    );  
   }
 }

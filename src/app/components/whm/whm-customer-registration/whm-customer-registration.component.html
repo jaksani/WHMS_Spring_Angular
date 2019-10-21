@@ -1,5 +1,5 @@
 <div class="card m-3 border-dark" >
-    <h3 class="card-header border-dark">New Registration</h3>
+    <h3 class="card-header border-dark">New Customer Registration</h3>
     <div class="card-body" style="width:100%" >
     <br>
         <form [formGroup]="registrationForm" (ngSubmit)="onSubmit(registrationForm.value)">
@@ -35,6 +35,9 @@
                     <div *ngIf="form.phone_number.errors.required">
                         Phone Number is Required
                     </div>
+                    <div *ngIf="form.phone_number.errors.pattern">
+                        Enter phone number of length 10
+                    </div>
                     </div>
                 </div>
             </div>
@@ -43,4 +46,25 @@
         </form>
     </div>    
 </div>
-
+<div class="card m-3 border-dark" *ngIf="isDisplay">
+    <h3 class="card-header border-dark">The Customer Registration is done with the following details</h3>
+    <div class="row">
+        <label class="col-sm-4">Customer Code:</label>
+        <label class="col-sm-6">{{customerDetails.customer_code}}</label>
+    </div>
+    <div class="row">
+        <label class="col-sm-4">Customer Name:</label>
+        <label class="col-sm-6">{{customerDetails.customer_name}}</label>
+    </div>
+    <div class="row">
+        <label class="col-sm-4">Address:</label>
+        <label class="col-sm-6">{{customerDetails.address}}</label>
+    </div>
+    <div class="row">
+        <label class="col-sm-4">Phone Number:</label>
+        <label class="col-sm-6">{{customerDetails.phone_number}}</label>
+    </div>
+</div>
+<div class="card m-3 border-dark" *ngIf="isMessage">
+    <label>The Customer Registration encountered error</label>
+</div>

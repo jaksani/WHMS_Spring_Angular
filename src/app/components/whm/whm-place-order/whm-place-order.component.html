@@ -43,4 +43,25 @@
         </form>
     </div>    
 </div>
-
+<div class="card m-3 border-dark" *ngIf="isOrdered">
+    <h3 class="card-header border-dark">The order has been placed with the following details</h3>
+    <div class="row">
+        <label class="col-sm-4">Order Id:</label>
+        <div class="col-sm-5">{{orderDetails.order_Id}}</div>
+    </div>
+    <div class="row">
+        <label class="col-sm-4">Manufacturer Name:</label>
+        <div class="col-sm-5">{{orderDetails.manufacturer_name}}</div>
+    </div>
+    <div class="row">
+        <label class="col-sm-4">Item Code:</label>
+        <div class="col-sm-5">{{orderDetails.item_code}}</div>
+    </div>
+    <div class="row">
+        <label class="col-sm-4">Order Id:</label>
+        <div class="col-sm-5">{{orderDetails.item_quantity}}</div>
+    </div>
+</div>
+<div class="card m-3 border-dark" *ngIf="isError">
+    <label class="text-danger">The order encountered error</label>
+</div>

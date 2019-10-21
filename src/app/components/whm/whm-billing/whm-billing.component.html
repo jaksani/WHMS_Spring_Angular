@@ -41,5 +41,54 @@
             <br>
             <button class="btn btn-primary" type="submit">Bill</button>
         </form>
+    </div>
+    <div *ngIf="isItem">
+        <label class="text-danger">The item doesn't exists with given item code {{itemCode}}</label>
+    </div>
+    <div *ngIf="isStock">
+        <label class="text-danger">InSufficient Stock</label>
+    </div>
+    <div *ngIf="isCustomer">
+        <label class="text-danger">The customer doesn't exists with the given customer code {{customerCode}}</label>
     </div>    
 </div>
+<div class="card m-3 border-dark" *ngIf="isDisplay">
+    <h3 class="card-header border-dark">The Invoice has been generated as follows</h3>
+        <div class="card-body" style="width:100%" >
+            <div class="row">
+                <div class="col-sm-4">Transaction Id:</div>
+                <div class="col-sm-6">{{purchaseDetails.transaction_id}}</div>
+            </div>
+            <div class="row">
+                <div class="col-sm-4">Date of Purchase:</div>
+                <div class="col-sm-6">{{purchaseDetails.date_of_purchase}}</div>
+            </div>
+            <div class="row">
+                <div class="col-sm-4">Customer Code:</div>
+                <div class="col-sm-6">{{purchaseDetails.customer_code}}</div>
+            </div>
+            <div class="row">
+                <div class="col-sm-4">Item Code:</div>
+                <div class="col-sm-6">{{purchaseDetails.item_code}}</div>
+            </div>
+            <div class="row">
+                <div class="col-sm-4">Item Quantity:</div>
+                <div class="col-sm-6">{{purchaseDetails.quantity}}</div>
+            </div>
+            <div class="row">
+                <div class="col-sm-4">Total Amount:</div>
+                <div class="col-sm-6">{{purchaseDetails.purchase_amount}}</div>
+            </div>
+        </div>
+</div>
+<!-- <div class="card m-3 border-dark" *ngIf="isMessage">
+        <div *ngIf="isItem">
+            <label class="text-danger">The item doesn't exists with given item code {{itemCode}}</label>
+        </div>
+        <div *ngIf="isStock">
+            <label class="text-danger">InSufficient Stock</label>
+        </div>
+        <div *ngIf="isCustomer">
+            <label class="text-danger">The customer doesn't exists with the given customer code {{customerCode}}</label>
+        </div>
+</div> -->

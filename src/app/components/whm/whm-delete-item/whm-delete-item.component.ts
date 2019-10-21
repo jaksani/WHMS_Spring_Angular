@@ -13,9 +13,13 @@ export class WhmDeleteItemComponent implements OnInit {
 
   
   constructor(private whmService:WhmService,private router : Router,private formBuilder:FormBuilder) { }
-  submitted=false;
-  
+  private submitted=false;
+  private isDeleted=false;
+  private isNull=false;
+
   ngOnInit() {
+    this.submitted=false;
+    this.deleteForm.reset();
   }
 
   deleteForm = this.formBuilder.group({
@@ -35,8 +39,18 @@ export class WhmDeleteItemComponent implements OnInit {
     this.whmService.deleteItem(itemDetails).subscribe(
       (data) =>
       {
-        console.log(data);
-        
+        if(data)
+        {
+          this.isDeleted=true;
+          this.ngOnInit();
+          this.isNull=false;
+        }
+        else
+        {
+          this.isNull=true;
+          this.ngOnInit();
+          this.isDeleted= false;
+        }
       }
     );
     

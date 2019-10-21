@@ -44,6 +44,7 @@ export class WhmPurchaseOnADateComponent implements OnInit {
         if(this.purchaseList.length!=0)
         {
           this.isDisplay=true;
+          this.isMessage=false;
         }
         else
         {

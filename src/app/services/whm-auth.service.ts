@@ -12,7 +12,6 @@ export class WhmAuthService {
   hasAccess():boolean
   {
     let whmDetails:User=JSON.parse(sessionStorage.getItem('whmDetails'));
-    console.log(whmDetails + 'in auth service');
     
     if(whmDetails != null && whmDetails.user_type == "WareHouse_Manager")
     {

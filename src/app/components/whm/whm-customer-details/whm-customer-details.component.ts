@@ -16,9 +16,11 @@ export class WhmCustomerDetailsComponent implements OnInit {
   private submitted=false;
   private isMessage=false;
   private isDisplay=false;
+  private code:number;
   private customerDetails:CustomerDetails;
   
   ngOnInit() {
+    this.submitted=false;
     this.detailsForm.reset();
   }
 
@@ -34,21 +36,23 @@ export class WhmCustomerDetailsComponent implements OnInit {
   onSubmit(customerDetails:CustomerDetails)
   { 
     this.submitted=true;
-    let code:number=customerDetails.customer_code;
-    this.whmService.getDetails(code).subscribe(
+    this.code=customerDetails.customer_code;
+    this.whmService.getDetails(this.code).subscribe(
       data =>
       {
-        this.customerDetails=data;
-        if(this.customerDetails!=null)
+        if(data!=null)
         {
+          this.customerDetails=data;
           this.isDisplay=true;
           this.ngOnInit();
+          this.isMessage=false;
         }
-      },
-      error =>
-      {
-        this.isMessage=true;
-        this.ngOnInit();
+        else
+        {
+          this.isMessage=true;
+          this.ngOnInit();
+          this.isDisplay=false;
+        }
       }
     );
     

@@ -12,7 +12,6 @@ export class ManufacturerAuthService {
   hasAccess():boolean
   {
     let manufacturerDetails:User=JSON.parse(sessionStorage.getItem('manufacturerDetails'));
-    console.log(manufacturerDetails + 'in auth service');
     
     if(manufacturerDetails != null && manufacturerDetails.user_type == "Manufacturer")
     {

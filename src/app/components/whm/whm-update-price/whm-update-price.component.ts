@@ -14,12 +14,14 @@ export class WhmUpdatePriceComponent implements OnInit {
 
   
   constructor(private whmService:WhmService,private router : Router,private formBuilder:FormBuilder) { }
-  private submitted=false;
-  private isMessage=false;
-  private isDisplay=false;
+  private submitted:boolean=false;
+  private isMessage:boolean=false;
+  private isDisplay:boolean=false;
+  private code:number;
   private itemDetails:ItemDetails;
   
   ngOnInit() {
+    this.submitted=false;
     this.updateForm.reset();
   }
 
@@ -35,31 +37,27 @@ export class WhmUpdatePriceComponent implements OnInit {
   
   onSubmit(itemDetails:ItemDetails)
   { 
-    this.submitted=true;
-    let code:number=itemDetails.item_code;
+    this.submitted=true;  
+    this.code=itemDetails.item_code;    
     this.whmService.updatePrice(itemDetails).subscribe(
       data =>
       {
-        this.itemDetails=data;
-        if(itemDetails!=null)
+        if(data!=null)
         {
+          this.itemDetails=data;
           this.isDisplay=true;
           this.ngOnInit();
+          this.isMessage=false;
         }
-      },
-      error =>
-      {
-        this.isMessage=true;
-        this.ngOnInit();
+        else
+        { 
+          this.isMessage=true;
+          this.ngOnInit();
+          this.isDisplay=false;
+        }
       }
     );
     
-  }
-
-  onReset()
-  {
-    this.submitted=false;
-    this.updateForm.reset();
   }
 
 }
