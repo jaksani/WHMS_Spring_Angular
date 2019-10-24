@@ -18,7 +18,9 @@
             <button class="btn btn-primary" type="submit">Get Purchases</button>
         </form>
         <br>
-        <button class="btn btn-secondary" (click)="onReset()">Reset</button>
+        <div *ngIf="isMessage">
+            <label class="text-danger">There are no purchases on the given date {{date}}</label>
+        </div>
     </div>    
 </div>
 <div class="card m-3 border-dark" *ngIf="isDisplay">
@@ -41,7 +43,4 @@
         <tr>
     </table>
     </div>    
-</div>
-<div class="card m-3 border-dark text-center" *ngIf="isMessage">
-    <label class="text-danger">There are no purchases on date {{date}}</label>
 </div>

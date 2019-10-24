@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { FormBuilder,  Validators} from '@angular/forms';
 import { PurchaseDetails } from 'src/app/models/purchase-details';
 import { WhmService } from 'src/app/services/whm.service';
+import { HttpErrorResponse } from '@angular/common/http/http';
 
 @Component({
   selector: 'app-whm-billing',
@@ -15,11 +16,12 @@ export class WhmBillingComponent implements OnInit {
   private submitted:boolean=false;
   private isDisplay:boolean=false;
   private isMessage:boolean=false;
-  private isCustomer:boolean=false;
-  private isItem:boolean=false;
-  private isStock:boolean=false;
-  private itemCode:number;
-  private customerCode:number;
+  private errorMessage:string;
+  // private isCustomer:boolean=false;
+  // private isItem:boolean=false;
+  // private isStock:boolean=false;
+  // private itemCode:number;
+  // private customerCode:number;
   private purchaseDetails:PurchaseDetails=null;
 
   
@@ -40,45 +42,24 @@ export class WhmBillingComponent implements OnInit {
   onSubmit(billingDetails:PurchaseDetails)
   { 
     this.submitted=true;
-    this.itemCode=billingDetails.item_code;
-    this.customerCode=billingDetails.customer_code;
     this.whmService.generateBill(billingDetails).subscribe(
       data =>
       {
         if(data!=null)
         { 
           this.purchaseDetails=data;
-          if(this.purchaseDetails.item_code==0)
-          {
-            this.isMessage=true;
-            this.isItem=true;
-            this.ngOnInit();
-            this.isDisplay=false;
-          }
-          else if(data.quantity==0)
-          {
-            this.isMessage=true;
-            this.isStock=true;
-            this.ngOnInit();
-            this.isDisplay=false;
-          }
-          else
-          {
-            this.isDisplay=true;
-            this.ngOnInit();
-            this.isMessage=false;
-          }
-        }
-        else
-        {
-          this.isMessage=true;
-          this.isCustomer=true;
+          this.isDisplay=true;
           this.ngOnInit();
-          this.isDisplay=false;
+          this.isMessage=false;
         }
+      },
+      (error:HttpErrorResponse)=>
+      {
+        this.errorMessage=error.error.message;      
+        this.isMessage=true;
+        this.ngOnInit();
+        this.isDisplay=false;
       }
     );
-    
   }
-
 }

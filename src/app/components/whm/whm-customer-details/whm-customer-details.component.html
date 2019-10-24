@@ -17,6 +17,10 @@
             <br>
             <button class="btn btn-primary" type="submit">Get Details</button>
         </form>
+        <br>
+        <div *ngIf="isMessage">
+            <label >{{errorMessage}}</label>
+        </div>
     </div>    
 </div>
 <div class="card m-3 border-dark" *ngIf="isDisplay">
@@ -36,6 +40,4 @@
             </div>
         </div>
 </div>
-<div class="card m-3 border-dark" *ngIf="isMessage">
-        <label class="text-danger">There is no customer with given customer code {{code}}</label>
-</div>
+

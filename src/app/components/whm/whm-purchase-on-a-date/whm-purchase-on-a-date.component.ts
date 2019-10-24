@@ -3,6 +3,7 @@ import { WhmService } from 'src/app/services/whm.service';
 import { Router } from '@angular/router';
 import { FormBuilder, Validators } from '@angular/forms';
 import { PurchaseDetails } from 'src/app/models/purchase-details';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-whm-purchase-on-a-date',
@@ -12,14 +13,15 @@ import { PurchaseDetails } from 'src/app/models/purchase-details';
 export class WhmPurchaseOnADateComponent implements OnInit {
 
   constructor(private whmService:WhmService,private router : Router,private formBuilder:FormBuilder) { }
-  submitted=false;
-  isDisplay=false;
-  isMessage=false;
+  private submitted=false;
+  private isDisplay=false;
+  private isMessage=false;
+  private date:any;
   purchaseList:PurchaseDetails[];
-  date:any;
 
   ngOnInit() {
-
+    this.submitted=false;
+    this.purchaseForm.reset();
   }
 
   purchaseForm = this.formBuilder.group({
@@ -34,34 +36,26 @@ export class WhmPurchaseOnADateComponent implements OnInit {
   onSubmit(purchaseDetails:PurchaseDetails)
   { 
     this.submitted=true;
-
+    this.date=purchaseDetails.date_of_purchase;
     this.whmService.getPurchases(purchaseDetails).subscribe(
       data =>
       { 
         this.purchaseList=data;
-        this.date=purchaseDetails.date_of_purchase;
-        console.log(this.purchaseList);
         if(this.purchaseList.length!=0)
         {
           this.isDisplay=true;
+          this.ngOnInit();
           this.isMessage=false;
         }
         else
         {
           this.isMessage=true;
+          this.ngOnInit();
           this.isDisplay=false
         }
       }
     );
     
-  }
-  
-  onReset()
-  {
-    this.isDisplay=false;
-    this.submitted=false;
-    this.isMessage=false;
-    this.purchaseForm.reset();
   }
 
 }

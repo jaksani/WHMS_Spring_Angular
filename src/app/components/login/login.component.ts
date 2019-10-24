@@ -3,6 +3,8 @@ import { User } from 'src/app/models/user';
 import { LoginService } from 'src/app/services/login.service';
 import { Router } from '@angular/router';
 import { FormBuilder,  Validators} from '@angular/forms';
+import { error } from 'protractor';
+import { HttpErrorResponse } from '@angular/common/http';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -13,7 +15,7 @@ export class LoginComponent implements OnInit {
   constructor(private loginService:LoginService,private router : Router,private formBuilder:FormBuilder) { }
   private submitted=false;
   private isInvalid=false;
-
+  private errorMessage:string;
 
   ngOnInit() {
     this.submitted=false;
@@ -50,11 +52,12 @@ export class LoginComponent implements OnInit {
               this.router.navigate(['manufacturer']);
             }
         }
-        else
-        {
-          this.isInvalid=true;
-          this.ngOnInit();
-        }
+      },
+      (error:HttpErrorResponse) =>
+      {
+        this.errorMessage=error.error.message;
+        this.isInvalid=true;
+        this.ngOnInit();
       }
     );  
   }

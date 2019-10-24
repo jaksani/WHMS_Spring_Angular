@@ -41,6 +41,10 @@
             <br>
             <button class="btn btn-primary" type="submit">Place Order</button>
         </form>
+        <br>
+        <div *ngIf="isError">
+            <label >{{errorMessage}}</label>
+        </div>
     </div>    
 </div>
 <div class="card m-3 border-dark" *ngIf="isOrdered">
@@ -62,6 +66,4 @@
         <div class="col-sm-5">{{orderDetails.item_quantity}}</div>
     </div>
 </div>
-<div class="card m-3 border-dark" *ngIf="isError">
-    <label class="text-danger">The order encountered error</label>
-</div>
+

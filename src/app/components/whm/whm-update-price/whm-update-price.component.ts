@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { FormBuilder, Validators } from '@angular/forms';
 import { ItemDetails } from 'src/app/models/item-details';
 import { error } from 'protractor';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-whm-update-price',
@@ -17,7 +18,7 @@ export class WhmUpdatePriceComponent implements OnInit {
   private submitted:boolean=false;
   private isMessage:boolean=false;
   private isDisplay:boolean=false;
-  private code:number;
+  private errorMessage:String;
   private itemDetails:ItemDetails;
   
   ngOnInit() {
@@ -37,8 +38,7 @@ export class WhmUpdatePriceComponent implements OnInit {
   
   onSubmit(itemDetails:ItemDetails)
   { 
-    this.submitted=true;  
-    this.code=itemDetails.item_code;    
+    this.submitted=true;    
     this.whmService.updatePrice(itemDetails).subscribe(
       data =>
       {
@@ -49,12 +49,19 @@ export class WhmUpdatePriceComponent implements OnInit {
           this.ngOnInit();
           this.isMessage=false;
         }
-        else
-        { 
-          this.isMessage=true;
-          this.ngOnInit();
-          this.isDisplay=false;
-        }
+        // else
+        // { 
+        //   this.isMessage=true;
+        //   this.ngOnInit();
+        //   this.isDisplay=false;
+        // }
+      },
+      (error:HttpErrorResponse)=>
+      {
+        this.errorMessage=error.error.message;
+        this.isMessage=true;
+        this.ngOnInit();
+        this.isDisplay=false;
       }
     );
     

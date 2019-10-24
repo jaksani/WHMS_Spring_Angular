@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { FormBuilder, Validators } from '@angular/forms';
 import { OrderDetails } from 'src/app/models/order-details';
 import { User } from 'src/app/models/user';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-whm-place-order',
@@ -17,6 +18,7 @@ export class WhmPlaceOrderComponent implements OnInit {
   private submitted=false;
   private isOrdered=false;
   private isError=false;
+  private errorMessage:String;
   private orderDetails:OrderDetails;
   ngOnInit() {
   }
@@ -47,12 +49,19 @@ export class WhmPlaceOrderComponent implements OnInit {
           this.ngOnInit();     
           this.isError=false;
         }
-        else
-        {
-          this.isError=true;
-          this.ngOnInit();
-          this.isOrdered=false;
-        }
+        // else
+        // {
+        //   this.isError=true;
+        //   this.ngOnInit();
+        //   this.isOrdered=false;
+        // }
+      },
+      (error:HttpErrorResponse)=>
+      {
+        this.errorMessage=error.error.message;
+        this.isError=true;
+        this.ngOnInit();
+        this.isOrdered=false;
       }
     );
     

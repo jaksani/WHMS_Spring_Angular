@@ -3,6 +3,7 @@ import { WhmService } from 'src/app/services/whm.service';
 import { Router } from '@angular/router';
 import { FormBuilder, Validators } from '@angular/forms';
 import { ItemDetails } from 'src/app/models/item-details';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-whm-delete-item',
@@ -16,6 +17,7 @@ export class WhmDeleteItemComponent implements OnInit {
   private submitted=false;
   private isDeleted=false;
   private isNull=false;
+  private errorMessage:String;
 
   ngOnInit() {
     this.submitted=false;
@@ -45,12 +47,19 @@ export class WhmDeleteItemComponent implements OnInit {
           this.ngOnInit();
           this.isNull=false;
         }
-        else
-        {
-          this.isNull=true;
-          this.ngOnInit();
-          this.isDeleted= false;
-        }
+        // else
+        // {
+        //   this.isNull=true;
+        //   this.ngOnInit();
+        //   this.isDeleted= false;
+        // }
+      },
+      (error:HttpErrorResponse)=>
+      {
+        this.errorMessage=error.error.message;
+        this.isNull=true;
+        this.ngOnInit();
+        this.isDeleted= false;
       }
     );
     

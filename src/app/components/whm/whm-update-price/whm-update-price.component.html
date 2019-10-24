@@ -1,5 +1,5 @@
 <div class="card m-3 border-dark" >
-        <h3 class="card-header border-dark">Item Price Updation</h3>
+    <h3 class="card-header border-dark">Item Price Updation</h3>
     <div class="card-body" style="width:100%" >
     <br>
         <form [formGroup]="updateForm" (ngSubmit)="onSubmit(updateForm.value)">
@@ -29,12 +29,13 @@
             <br>
             <button class="btn btn-primary" type="submit">Update</button>
         </form>
-        
+        <br>
+        <div *ngIf="isMessage">
+            <label>{{errorMessage}}</label>
+        </div>
     </div>    
 </div>
 <div class="card m-3 border-dark" *ngIf="isDisplay">
     <label class="text-danger">The price of item with item code {{itemDetails.item_code}} updated to {{itemDetails.item_price}} rupees</label>
 </div>
-<div class="card m-3 border-dark" *ngIf="isMessage">
-        <label class="text-danger">There is no item with given item code {{code}}</label>
-</div>
+

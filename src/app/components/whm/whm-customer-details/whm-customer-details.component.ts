@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { FormBuilder, Validators } from '@angular/forms';
 import { CustomerDetails } from 'src/app/models/customer-details';
 import { error } from 'protractor';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-whm-customer-details',
@@ -17,6 +18,7 @@ export class WhmCustomerDetailsComponent implements OnInit {
   private isMessage=false;
   private isDisplay=false;
   private code:number;
+  private errorMessage:String;
   private customerDetails:CustomerDetails;
   
   ngOnInit() {
@@ -47,12 +49,13 @@ export class WhmCustomerDetailsComponent implements OnInit {
           this.ngOnInit();
           this.isMessage=false;
         }
-        else
-        {
-          this.isMessage=true;
-          this.ngOnInit();
-          this.isDisplay=false;
-        }
+      },
+      (error:HttpErrorResponse)=>
+      {
+        this.errorMessage=error.error.message;
+        this.isMessage=true;
+        this.ngOnInit();
+        this.isDisplay=false;
       }
     );
     

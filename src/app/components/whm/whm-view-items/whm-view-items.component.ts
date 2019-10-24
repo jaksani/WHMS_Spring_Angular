@@ -3,6 +3,7 @@ import { WhmService } from 'src/app/services/whm.service';
 import { Router } from '@angular/router';
 import { ItemDetails } from 'src/app/models/item-details';
 import { Observable } from 'rxjs';
+import { error } from 'protractor';
 
 @Component({
   selector: 'app-whm-view-items',
@@ -25,6 +26,10 @@ export class WhmViewItemsComponent implements OnInit {
         {
             this.itemList=data;   
         }
+      },
+      error=>
+      {
+        
       }
     )
   }

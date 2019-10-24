@@ -1,6 +1,6 @@
 <div class="card m-3 border-dark" >
     <h3 class="card-header border-dark ">Billing</h3>
-    <div class="card-body " style="width:100%" >
+    <div class="card-body" style="width:100%" >
         <br>
         <form [formGroup]="billingForm" (ngSubmit)="onSubmit(billingForm.value)">
             <div class="form-row" >
@@ -41,16 +41,11 @@
             <br>
             <button class="btn btn-primary" type="submit">Bill</button>
         </form>
+        <br>
+        <div *ngIf="isMessage">
+            <label>{{errorMessage}}</label>
+        </div>
     </div>
-    <div *ngIf="isItem">
-        <label class="text-danger">The item doesn't exists with given item code {{itemCode}}</label>
-    </div>
-    <div *ngIf="isStock">
-        <label class="text-danger">InSufficient Stock</label>
-    </div>
-    <div *ngIf="isCustomer">
-        <label class="text-danger">The customer doesn't exists with the given customer code {{customerCode}}</label>
-    </div>    
 </div>
 <div class="card m-3 border-dark" *ngIf="isDisplay">
     <h3 class="card-header border-dark">The Invoice has been generated as follows</h3>
@@ -81,14 +76,3 @@
             </div>
         </div>
 </div>
-<!-- <div class="card m-3 border-dark" *ngIf="isMessage">
-        <div *ngIf="isItem">
-            <label class="text-danger">The item doesn't exists with given item code {{itemCode}}</label>
-        </div>
-        <div *ngIf="isStock">
-            <label class="text-danger">InSufficient Stock</label>
-        </div>
-        <div *ngIf="isCustomer">
-            <label class="text-danger">The customer doesn't exists with the given customer code {{customerCode}}</label>
-        </div>
-</div> -->
