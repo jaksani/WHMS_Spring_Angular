@@ -10,7 +10,6 @@ import { WhmDeleteItemComponent } from './whm-delete-item/whm-delete-item.compon
 import { WhmPlaceOrderComponent } from './whm-place-order/whm-place-order.component';
 import { WhmPurchaseOnADateComponent } from './whm-purchase-on-a-date/whm-purchase-on-a-date.component';
 import { WhmUpdatePriceComponent } from './whm-update-price/whm-update-price.component';
-import { WhmGuard } from 'src/app/auth/whm.guard';
 
 
 const routes: Routes = [
